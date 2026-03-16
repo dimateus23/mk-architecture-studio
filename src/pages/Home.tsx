@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence, useScroll, useTransform, type Variants, type Transition } from 'framer-motion'
 
+const EASE_OUT: [number, number, number, number] = [0.22, 1, 0.36, 1]
+
 // ─── Slideshow images ────────────────────────────────────────────────────────
 const SLIDES = [
   'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80',
@@ -17,13 +19,13 @@ const fadeUp = {
   show: (delay = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1], delay },
+    transition: { duration: 0.8, ease: EASE_OUT, delay },
   }),
 }
 
 const inView = {
   hidden: { opacity: 0, y: 40 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: EASE_OUT } },
 }
 
 const featuredProjects = [
@@ -244,7 +246,7 @@ export default function Home() {
               initial={{ opacity: 0, scale: 1.04 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 1, ease: EASE_OUT }}
             >
               <img
                 src="https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?auto=format&fit=crop&w=800&q=80"
