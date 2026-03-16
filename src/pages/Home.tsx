@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
+import { motion, AnimatePresence, useScroll, useTransform, type Variants, type Transition } from 'framer-motion'
 
 // ─── Slideshow images ────────────────────────────────────────────────────────
 const SLIDES = [

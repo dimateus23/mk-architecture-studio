@@ -1,9 +1,11 @@
-import { motion } from 'framer-motion'
+import { motion, type Variants } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
-const inView = {
+const EASE_OUT: [number, number, number, number] = [0.22, 1, 0.36, 1]
+
+const inView: Variants = {
   hidden: { opacity: 0, y: 36 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.75, ease: EASE_OUT } },
 }
 
 const ArrowIcon = () => (
