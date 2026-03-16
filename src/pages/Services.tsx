@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { EASE_OUT, inView36 } from '../shared/motion/presets'
+import { inView36 } from '../shared/motion/presets'
 
 const inView = inView36
 

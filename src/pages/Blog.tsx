@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { BLOG_FEATURED, BLOG_POSTS } from '../content/blog'
-import { EASE_OUT, inView36 } from '../shared/motion/presets'
+import { inView36 } from '../shared/motion/presets'
 
 const inView = inView36
 
