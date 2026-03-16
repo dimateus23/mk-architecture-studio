@@ -1,39 +1,9 @@
-import { motion, type Variants } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { ABOUT_TIMELINE, ABOUT_VALUES } from '../content/about'
+import { inView40 } from '../shared/motion/presets'
 
-const EASE_OUT: [number, number, number, number] = [0.22, 1, 0.36, 1]
-
-const inView: Variants = {
-  hidden: { opacity: 0, y: 40 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: EASE_OUT } },
-}
-
-const values = [
-  {
-    num: '01',
-    title: 'Contextual Sensitivity',
-    desc: 'Every site carries a history. We listen to the land, the culture, and the community before drawing a single line.',
-  },
-  {
-    num: '02',
-    title: 'Material Integrity',
-    desc: 'We use materials honestly — for what they are, not what they simulate. Concrete, stone, timber, and glass each speak their own truth.',
-  },
-  {
-    num: '03',
-    title: 'Human Scale',
-    desc: 'Architecture exists to be inhabited. Every proportion, every threshold, every view is considered in relation to the human body and spirit.',
-  },
-]
-
-const timeline = [
-  { year: '2008', title: 'Studio Founded', desc: 'Miroslava Kucher establishes MK Architecture in Vienna after a decade with leading European firms.' },
-  { year: '2011', title: 'First Major Commission', desc: 'The Linz Cultural Pavilion opens to international acclaim, winning the EU Mies van der Rohe Award shortlist.' },
-  { year: '2014', title: 'New York Office', desc: 'Expanding to New York to serve a growing roster of American clients across residential and commercial sectors.' },
-  { year: '2018', title: 'Tokyo Partnership', desc: 'Strategic partnership with Hara Architectural Group opens the Asian market and brings new material influences.' },
-  { year: '2022', title: 'Sustainability Charter', desc: 'Studio commits to net-zero embodied carbon across all new projects by 2030.' },
-  { year: '2024', title: 'Retrospective Exhibition', desc: 'A 15-year retrospective of MK Architecture\'s work travels to Vienna, New York, and Seoul.' },
-]
+const inView = inView40
 
 export default function About() {
   return (
@@ -151,7 +121,7 @@ export default function About() {
             viewport={{ once: true, margin: '-60px' }}
             variants={{ show: { transition: { staggerChildren: 0.1 } } }}
           >
-            {values.map(({ num, title, desc }) => (
+            {ABOUT_VALUES.map(({ num, title, desc }) => (
               <motion.div key={num} className="value-card" variants={inView}>
                 <div className="value-num">{num}</div>
                 <h3 className="value-title">{title}</h3>
@@ -177,7 +147,7 @@ export default function About() {
           </div>
 
           <div className="timeline">
-            {timeline.map(({ year, title, desc }, i) => (
+            {ABOUT_TIMELINE.map(({ year, title, desc }, i) => (
               <motion.div
                 key={year}
                 className="timeline-item"

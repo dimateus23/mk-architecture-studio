@@ -1,17 +1,13 @@
-import { useState } from 'react'
-import { motion, type Variants } from 'framer-motion'
+import { useState, type FormEvent } from 'react'
+import { motion } from 'framer-motion'
+import { EASE_OUT, inView36 } from '../shared/motion/presets'
 
-const EASE_OUT: [number, number, number, number] = [0.22, 1, 0.36, 1]
-
-const inView: Variants = {
-  hidden: { opacity: 0, y: 36 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.75, ease: EASE_OUT } },
-}
+const inView = inView36
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setSubmitted(true)
   }
@@ -92,7 +88,9 @@ export default function Contact() {
 
             <div className="contact-social">
               {['IG', 'LI', 'PX', 'BE'].map(s => (
-                <a key={s} href="#" className="social-link">{s}</a>
+                <button key={s} type="button" className="social-link" aria-label={s}>
+                  {s}
+                </button>
               ))}
             </div>
           </motion.div>
@@ -153,8 +151,8 @@ export default function Contact() {
 
                 <div className="form-group">
                   <label htmlFor="projectType">Project Type</label>
-                  <select id="projectType" required>
-                    <option value="" disabled selected>Select a category</option>
+                  <select id="projectType" required defaultValue="">
+                    <option value="" disabled>Select a category</option>
                     <option>Residential — New Build</option>
                     <option>Residential — Renovation</option>
                     <option>Commercial</option>
@@ -168,8 +166,8 @@ export default function Contact() {
 
                 <div className="form-group">
                   <label htmlFor="budget">Approximate Budget</label>
-                  <select id="budget">
-                    <option value="" disabled selected>Select a range</option>
+                  <select id="budget" defaultValue="">
+                    <option value="" disabled>Select a range</option>
                     <option>Under $250k</option>
                     <option>$250k – $1M</option>
                     <option>$1M – $5M</option>
@@ -221,12 +219,12 @@ export default function Contact() {
                 understand what architecture can do for your project.
               </p>
             </div>
-            <a href="#" className="btn-primary" style={{ flexShrink: 0 }}>
+            <button type="button" className="btn-primary" style={{ flexShrink: 0 }}>
               Schedule a Call
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                 <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-            </a>
+            </button>
           </motion.div>
         </div>
       </section>

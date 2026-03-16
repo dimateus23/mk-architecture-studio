@@ -1,12 +1,8 @@
-import { motion, type Variants } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { EASE_OUT, inView36 } from '../shared/motion/presets'
 
-const EASE_OUT: [number, number, number, number] = [0.22, 1, 0.36, 1]
-
-const inView: Variants = {
-  hidden: { opacity: 0, y: 36 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.75, ease: EASE_OUT } },
-}
+const inView = inView36
 
 const ArrowIcon = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">

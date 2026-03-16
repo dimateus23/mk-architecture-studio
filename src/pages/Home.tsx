@@ -1,53 +1,13 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
-
-const EASE_OUT: [number, number, number, number] = [0.22, 1, 0.36, 1]
-
-// ─── Slideshow images ────────────────────────────────────────────────────────
-const SLIDES = [
-  'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80',
-  'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=1920&q=80',
-  'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1920&q=80',
-  'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=80',
-  'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=1920&q=80',
-]
+import { FEATURED_PROJECTS } from '../content/projects'
+import { HOME_SLIDES } from '../content/slides'
+import { EASE_OUT, fadeUp32, inView40 } from '../shared/motion/presets'
 
 // ─── Shared variants ──────────────────────────────────────────────────────────
-const fadeUp = {
-  hidden: { opacity: 0, y: 32 },
-  show: (delay = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, ease: EASE_OUT, delay },
-  }),
-}
-
-const inView = {
-  hidden: { opacity: 0, y: 40 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: EASE_OUT } },
-}
-
-const featuredProjects = [
-  {
-    id: 1,
-    title: 'Meridian Residences',
-    type: 'Residential',
-    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=900&q=80',
-  },
-  {
-    id: 2,
-    title: 'Pavilion Cultural Centre',
-    type: 'Cultural',
-    image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=900&q=80',
-  },
-  {
-    id: 3,
-    title: 'Helix Tower',
-    type: 'Commercial',
-    image: 'https://images.unsplash.com/photo-1431576901776-e539bd916ba2?auto=format&fit=crop&w=900&q=80',
-  },
-]
+const fadeUp = fadeUp32
+const inView = inView40
 
 // ─── Component ────────────────────────────────────────────────────────────────
 export default function Home() {
@@ -60,7 +20,7 @@ export default function Home() {
   // Auto-advance every 4 s, loops infinitely
   useEffect(() => {
     const id = setInterval(() => {
-      setSlideIndex(i => (i + 1) % SLIDES.length)
+      setSlideIndex(i => (i + 1) % HOME_SLIDES.length)
     }, 4000)
     return () => clearInterval(id)
   }, [])
@@ -83,7 +43,7 @@ export default function Home() {
             <motion.div
               key={slideIndex}
               className="hero-slide"
-              style={{ backgroundImage: `url(${SLIDES[slideIndex]})` }}
+              style={{ backgroundImage: `url(${HOME_SLIDES[slideIndex]})` }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -161,7 +121,7 @@ export default function Home() {
 
         {/* Slide indicator dots */}
         <div className="hero-dots">
-          {SLIDES.map((_, i) => (
+          {HOME_SLIDES.map((_, i) => (
             <button
               key={i}
               className={`hero-dot${i === slideIndex ? ' active' : ''}`}
@@ -184,7 +144,7 @@ export default function Home() {
           </span>
           <span className="hero-counter-sep" />
           <span className="hero-counter-total">
-            {String(SLIDES.length).padStart(2, '0')}
+            {String(HOME_SLIDES.length).padStart(2, '0')}
           </span>
         </motion.div>
       </section>
@@ -292,7 +252,7 @@ export default function Home() {
             viewport={{ once: true, margin: '-60px' }}
             variants={{ show: { transition: { staggerChildren: 0.12 } } }}
           >
-            {featuredProjects.map(({ id, title, type, image }) => (
+            {FEATURED_PROJECTS.map(({ id, title, type, image }) => (
               <motion.div key={id} className="featured-card" variants={inView}>
                 <img src={image} alt={title} loading="lazy" />
                 <div className="featured-card-info">
