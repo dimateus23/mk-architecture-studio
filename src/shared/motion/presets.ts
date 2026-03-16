@@ -14,10 +14,13 @@ export const inView40: Variants = {
 
 export const fadeUp32: Variants = {
   hidden: { opacity: 0, y: 32 },
-  show: (delay = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, ease: EASE_OUT, delay },
-  }),
+  show: (customDelay?: unknown) => {
+    const delay = typeof customDelay === 'number' ? customDelay : 0
+    return {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: EASE_OUT, delay },
+    }
+  },
 }
 
