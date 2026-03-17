@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react'
+import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
 import { EASE_OUT, inView36 } from '../shared/motion/presets'
 
@@ -13,9 +14,14 @@ export default function Contact() {
   }
 
   return (
-    <motion.main
-      className="page"
-      initial={{ opacity: 0 }}
+    <>
+      <Helmet>
+        <title>Contact | MK Architecture Studio</title>
+        <meta name="description" content="Get in touch with MK Architecture Studio to discuss your next project or collaboration." />
+      </Helmet>
+      <motion.main
+        className="page"
+        initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.4 }}
@@ -229,5 +235,6 @@ export default function Contact() {
         </div>
       </section>
     </motion.main>
+    </>
   )
 }

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Helmet } from 'react-helmet-async'
 import { motion, AnimatePresence } from 'framer-motion'
 import { PROJECTS, PROJECT_FILTERS } from '../content/projects'
 import type { ProjectType } from '../content/types'
@@ -15,10 +16,15 @@ export default function Projects() {
       : PROJECTS.filter(p => p.type === (active satisfies ProjectType))
 
   return (
-    <motion.main
-      className="page"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+    <>
+      <Helmet>
+        <title>Projects | MK Architecture Studio</title>
+        <meta name="description" content="Browse MK Architecture Studio's portfolio of residential, commercial, and cultural architecture projects." />
+      </Helmet>
+      <motion.main
+        className="page"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.4 }}
     >
@@ -96,5 +102,6 @@ export default function Projects() {
         </AnimatePresence>
       </div>
     </motion.main>
+    </>
   )
 }

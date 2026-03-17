@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { inView36 } from '../shared/motion/presets'
@@ -51,10 +52,15 @@ const services = [
 
 export default function Services() {
   return (
-    <motion.main
-      className="page"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+    <>
+      <Helmet>
+        <title>Services | MK Architecture Studio</title>
+        <meta name="description" content="Discover the full range of architectural services offered by MK Architecture Studio — from concept design to project delivery." />
+      </Helmet>
+      <motion.main
+        className="page"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.4 }}
     >
@@ -140,5 +146,6 @@ export default function Services() {
         </motion.div>
       </div>
     </motion.main>
+    </>
   )
 }

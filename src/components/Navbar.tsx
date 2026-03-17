@@ -24,6 +24,16 @@ export default function Navbar() {
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 900 && menuOpen) {
+        setMenuOpen(false)
+      }
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [menuOpen])
+
   return (
     <>
       <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { FEATURED_PROJECTS } from '../content/projects'
 import { HOME_SLIDES } from '../content/slides'
@@ -26,11 +27,16 @@ export default function Home() {
   }, [])
 
   return (
-    <motion.main
-      className="page"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+    <>
+      <Helmet>
+        <title>MK Architecture Studio | Crafting Spaces With Purpose</title>
+        <meta name="description" content="MK Architecture Studio designs purposeful spaces that blend form, function, and narrative. Explore our portfolio of residential and commercial architecture." />
+      </Helmet>
+      <motion.main
+        className="page"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
       transition={{ duration: 0.4 }}
     >
       {/* ── Hero ───────────────────────────────────────────────────────────── */}
@@ -299,5 +305,6 @@ export default function Home() {
         </div>
       </section>
     </motion.main>
+    </>
   )
 }

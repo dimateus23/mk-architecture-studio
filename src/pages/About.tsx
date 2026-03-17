@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ABOUT_TIMELINE, ABOUT_VALUES } from '../content/about'
@@ -7,10 +8,15 @@ const inView = inView40
 
 export default function About() {
   return (
-    <motion.main
-      className="page"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+    <>
+      <Helmet>
+        <title>About | MK Architecture Studio</title>
+        <meta name="description" content="Learn about MK Architecture Studio — our story, values, and the team behind our award-winning architectural designs." />
+      </Helmet>
+      <motion.main
+        className="page"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.4 }}
     >
@@ -167,5 +173,6 @@ export default function About() {
         </div>
       </section>
     </motion.main>
+    </>
   )
 }
