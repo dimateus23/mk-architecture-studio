@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom'
+import styles from './Footer.module.css'
 
 export default function Footer() {
   return (
-    <footer className="footer">
+    <footer className={styles.footer}>
       <div className="container">
-        <div className="footer-grid">
-          <div className="footer-brand">
-            <div className="footer-brand-logo">
+        <div className={styles.footerGrid}>
+          <div className={styles.footerBrand}>
+            <div className={styles.footerBrandLogo}>
               MK<span> Architecture</span>
             </div>
             <p>
@@ -15,7 +16,7 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="footer-col">
+          <div className={styles.footerCol}>
             <h4>Studio</h4>
             <ul>
               <li><Link to="/projects">Projects</Link></li>
@@ -25,7 +26,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="footer-col">
+          <div className={styles.footerCol}>
             <h4>Services</h4>
             <ul>
               <li><Link to="/services">Residential</Link></li>
@@ -35,7 +36,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="footer-col">
+          <div className={styles.footerCol}>
             <h4>Contact</h4>
             <ul>
               <li><Link to="/contact">Get in Touch</Link></li>
@@ -46,7 +47,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="footer-bottom">
+        <div className={styles.footerBottom}>
           <p>© {new Date().getFullYear()} MK Architecture Studio. All rights reserved.</p>
           <p>New York · Vienna · Tokyo</p>
         </div>

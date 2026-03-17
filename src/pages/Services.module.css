@@ -1,0 +1,120 @@
+.servicesList {
+  padding: 72px 0 0;
+}
+
+.serviceItem {
+  display: grid;
+  grid-template-columns: 72px 1fr 64px;
+  gap: 48px;
+  align-items: center;
+  padding: 52px 0;
+  border-bottom: 1px solid var(--border);
+  transition: padding-left 0.4s var(--ease-out);
+  cursor: default;
+}
+
+.serviceItem:hover {
+  padding-left: 20px;
+}
+
+.serviceNum {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  color: var(--accent);
+  opacity: 0.6;
+  letter-spacing: 0.04em;
+}
+
+.serviceBody h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 300;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+  transition: color 0.3s;
+}
+
+.serviceItem:hover .serviceBody h3 {
+  color: var(--accent);
+}
+
+.serviceBody p {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  line-height: 1.85;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+
+.serviceTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.serviceTag {
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
+.serviceArrow {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  transition: all 0.3s;
+  flex-shrink: 0;
+}
+
+.serviceItem:hover .serviceArrow {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+
+.servicesCta {
+  padding: 100px 0 120px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  margin-top: 72px;
+}
+
+.servicesCta h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  font-weight: 300;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+
+.servicesCta p {
+  color: var(--text-dim);
+  font-size: 1rem;
+  max-width: 440px;
+  margin: 0 auto 44px;
+  line-height: 1.85;
+}
+
+.servicesCtaBtns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .serviceItem {
+    grid-template-columns: 48px 1fr;
+    gap: 24px;
+  }
+  .serviceArrow {
+    display: none;
+  }
+}

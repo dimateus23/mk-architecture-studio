@@ -1,0 +1,161 @@
+.contactLayout {
+  padding: 72px 0 100px;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+}
+
+.contactInfoTitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+
+.contactInfoDesc {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  line-height: 1.85;
+  margin-bottom: 52px;
+  max-width: 380px;
+}
+
+.contactDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 52px;
+}
+
+.contactDetailLabel {
+  font-size: 0.625rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+  display: block;
+}
+
+.contactDetailValue {
+  font-size: 0.9375rem;
+  color: var(--text-dim);
+}
+
+.contactSocial {
+  display: flex;
+  gap: 12px;
+}
+
+.socialLink {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: all 0.3s;
+}
+
+.socialLink:hover {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formGroup label {
+  font-size: 0.625rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 13px 16px;
+  font-size: 0.9375rem;
+  font-weight: 300;
+  outline: none;
+  transition: border-color 0.3s;
+  resize: none;
+  -webkit-appearance: none;
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+  border-color: var(--accent);
+}
+
+.formGroup input::placeholder,
+.formGroup textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.formGroup select option {
+  background: var(--bg-1);
+  color: var(--text);
+}
+
+.formSubmit {
+  margin-top: 8px;
+}
+
+.contactConsultation {
+  background: var(--bg-1);
+  border-top: 1px solid var(--border);
+  padding: 80px 0;
+}
+
+.consultationInner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 60px;
+  align-items: center;
+}
+
+.consultationInner h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.consultationInner p {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  max-width: 480px;
+  line-height: 1.85;
+}
+
+@media (max-width: 900px) {
+  .contactLayout { grid-template-columns: 1fr; gap: 56px; }
+  .formRow { grid-template-columns: 1fr; }
+  .consultationInner { grid-template-columns: 1fr; gap: 32px; }
+}

@@ -1,0 +1,123 @@
+.projectsFilters {
+  display: flex;
+  gap: 0;
+  margin: 56px 0 0;
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.projectsFilters::-webkit-scrollbar {
+  display: none;
+}
+
+.filterBtn {
+  padding: 14px 28px;
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: all 0.3s;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.filterBtn:hover {
+  color: var(--text-dim);
+}
+
+.filterBtn.active {
+  color: var(--text);
+  border-bottom-color: var(--accent);
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  padding: 48px 0 120px;
+}
+
+.projectCard {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  display: block;
+}
+
+.projectCard img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.75s var(--ease-out);
+}
+
+.projectCard:hover img {
+  transform: scale(1.06);
+}
+
+.projectCardOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 8, 8, 0);
+  transition: background 0.4s;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 28px;
+}
+
+.projectCard:hover .projectCardOverlay {
+  background: rgba(8, 8, 8, 0.55);
+}
+
+.projectCardMeta {
+  transform: translateY(14px);
+  opacity: 0;
+  transition: all 0.4s var(--ease-out);
+}
+
+.projectCard:hover .projectCardMeta {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.projectCardType {
+  font-size: 0.625rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.projectCardTitle {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+
+.projectCardYear {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.projectsLoading {
+  padding: 80px 0;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 900px) {
+  .projectsGrid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .projectsGrid { grid-template-columns: 1fr; }
+}

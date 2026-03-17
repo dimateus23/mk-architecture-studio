@@ -5,6 +5,7 @@ import { BLOG_FEATURED } from '../content/blog'
 import type { BlogPost } from '../content/types'
 import { fetchBlogPosts } from '../api/mockApi'
 import { inView36 } from '../shared/motion/presets'
+import styles from './Blog.module.css'
 
 const inView = inView36
 
@@ -64,25 +65,25 @@ export default function Blog() {
         <div className="container">
           {/* Featured Article */}
           <motion.div
-            className="blog-featured"
+            className={styles.blogFeatured}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
             variants={inView}
           >
-            <div className="blog-featured-image">
+            <div className={styles.blogFeaturedImage}>
               <img src={BLOG_FEATURED.image} alt={BLOG_FEATURED.title} loading="lazy" />
             </div>
-            <div className="blog-featured-content">
-              <p className="blog-eyebrow">{BLOG_FEATURED.category} · Featured</p>
-              <h2 className="blog-featured-title">{BLOG_FEATURED.title}</h2>
-              <div className="blog-meta">
+            <div className={styles.blogFeaturedContent}>
+              <p className={styles.blogEyebrow}>{BLOG_FEATURED.category} · Featured</p>
+              <h2 className={styles.blogFeaturedTitle}>{BLOG_FEATURED.title}</h2>
+              <div className={styles.blogMeta}>
                 <span>{BLOG_FEATURED.date}</span>
                 <span>·</span>
                 <span>{BLOG_FEATURED.readTime}</span>
               </div>
-              <p className="blog-excerpt">{BLOG_FEATURED.excerpt}</p>
-              <button type="button" className="blog-read-more">
+              <p className={styles.blogExcerpt}>{BLOG_FEATURED.excerpt}</p>
+              <button type="button" className={styles.blogReadMore}>
                 Read Article
                 <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
                   <path d="M1 5h12M8 1l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
@@ -93,12 +94,12 @@ export default function Blog() {
 
           {/* Articles Grid */}
           {loading ? (
-            <div className="blog-loading" aria-live="polite" aria-busy="true">
+            <div className={styles.blogLoading} aria-live="polite" aria-busy="true">
               Loading articles…
             </div>
           ) : (
             <motion.div
-              className="blog-grid"
+              className={styles.blogGrid}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, margin: '-60px' }}
@@ -107,21 +108,21 @@ export default function Blog() {
               {posts.map(({ id, title, category, date, readTime, excerpt, image }) => (
                 <motion.article
                   key={id}
-                  className="blog-card"
+                  className={styles.blogCard}
                   variants={inView}
                 >
-                  <div className="blog-card-image">
+                  <div className={styles.blogCardImage}>
                     <img src={image} alt={title} loading="lazy" />
                   </div>
-                  <div className="blog-card-meta">
+                  <div className={styles.blogCardMeta}>
                     <span>{category}</span>
                     <span>·</span>
                     <span>{date}</span>
                     <span>·</span>
                     <span>{readTime}</span>
                   </div>
-                  <h3 className="blog-card-title">{title}</h3>
-                  <p className="blog-card-excerpt">{excerpt}</p>
+                  <h3 className={styles.blogCardTitle}>{title}</h3>
+                  <p className={styles.blogCardExcerpt}>{excerpt}</p>
                 </motion.article>
               ))}
             </motion.div>

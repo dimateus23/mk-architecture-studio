@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { inView36 } from '../shared/motion/presets'
+import styles from './Services.module.css'
 
 const inView = inView36
 
@@ -61,91 +62,91 @@ export default function Services() {
         className="page"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.4 }}
-    >
-      <div className="page-header">
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.4 }}
+      >
+        <div className="page-header">
+          <div className="container">
+            <motion.span
+              className="page-eyebrow"
+              initial="hidden"
+              animate="show"
+              variants={inView}
+            >
+              What We Offer
+            </motion.span>
+            <motion.h1
+              className="page-title"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            >
+              Services
+            </motion.h1>
+            <motion.p
+              className="page-subtitle"
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
+            >
+              A full-spectrum practice. From the first sketch to the final detail, we offer
+              architectural services tailored to the complexity and ambition of your project.
+            </motion.p>
+          </div>
+        </div>
+
         <div className="container">
-          <motion.span
-            className="page-eyebrow"
+          <div className={styles.servicesList}>
+            {services.map(({ num, title, desc, tags }, i) => (
+              <motion.div
+                key={num}
+                className={styles.serviceItem}
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.65, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <span className={styles.serviceNum}>{num}</span>
+                <div className={styles.serviceBody}>
+                  <h3>{title}</h3>
+                  <p>{desc}</p>
+                  <div className={styles.serviceTags}>
+                    {tags.map(tag => (
+                      <span key={tag} className={styles.serviceTag}>{tag}</span>
+                    ))}
+                  </div>
+                </div>
+                <div className={styles.serviceArrow}>
+                  <ArrowIcon />
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            className={styles.servicesCta}
             initial="hidden"
-            animate="show"
+            whileInView="show"
+            viewport={{ once: true }}
             variants={inView}
           >
-            What We Offer
-          </motion.span>
-          <motion.h1
-            className="page-title"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          >
-            Services
-          </motion.h1>
-          <motion.p
-            className="page-subtitle"
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
-          >
-            A full-spectrum practice. From the first sketch to the final detail, we offer
-            architectural services tailored to the complexity and ambition of your project.
-          </motion.p>
-        </div>
-      </div>
-
-      <div className="container">
-        <div className="services-list">
-          {services.map(({ num, title, desc, tags }, i) => (
-            <motion.div
-              key={num}
-              className="service-item"
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.65, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <span className="service-num">{num}</span>
-              <div className="service-body">
-                <h3>{title}</h3>
-                <p>{desc}</p>
-                <div className="service-tags">
-                  {tags.map(tag => (
-                    <span key={tag} className="service-tag">{tag}</span>
-                  ))}
-                </div>
-              </div>
-              <div className="service-arrow">
+            <h2>Ready to Begin?</h2>
+            <p>
+              Every great project starts with a conversation. Tell us about your vision
+              and we will tell you how we can help realise it.
+            </p>
+            <div className={styles.servicesCtaBtns}>
+              <Link to="/contact" className="btn-primary">
+                Start a Project
                 <ArrowIcon />
-              </div>
-            </motion.div>
-          ))}
+              </Link>
+              <Link to="/projects" className="btn-outline">
+                See Our Work
+              </Link>
+            </div>
+          </motion.div>
         </div>
-
-        <motion.div
-          className="services-cta"
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          variants={inView}
-        >
-          <h2>Ready to Begin?</h2>
-          <p>
-            Every great project starts with a conversation. Tell us about your vision
-            and we will tell you how we can help realise it.
-          </p>
-          <div className="services-cta-btns">
-            <Link to="/contact" className="btn-primary">
-              Start a Project
-              <ArrowIcon />
-            </Link>
-            <Link to="/projects" className="btn-outline">
-              See Our Work
-            </Link>
-          </div>
-        </motion.div>
-      </div>
-    </motion.main>
+      </motion.main>
     </>
   )
 }

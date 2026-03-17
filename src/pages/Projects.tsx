@@ -5,6 +5,7 @@ import { PROJECT_FILTERS } from '../content/projects'
 import type { Project, ProjectType } from '../content/types'
 import { fetchProjects } from '../api/mockApi'
 import { inView36 } from '../shared/motion/presets'
+import styles from './Projects.module.css'
 
 const inView = inView36
 
@@ -68,11 +69,11 @@ export default function Projects() {
         </div>
 
         <div className="container">
-          <div className="projects-filters">
+          <div className={styles.projectsFilters}>
             {PROJECT_FILTERS.map(f => (
               <button
                 key={f}
-                className={`filter-btn${active === f ? ' active' : ''}`}
+                className={`${styles.filterBtn}${active === f ? ' ' + styles.active : ''}`}
                 onClick={() => setActive(f)}
               >
                 {f}
@@ -81,14 +82,14 @@ export default function Projects() {
           </div>
 
           {loading ? (
-            <div className="projects-loading" aria-live="polite" aria-busy="true">
+            <div className={styles.projectsLoading} aria-live="polite" aria-busy="true">
               Loading projects…
             </div>
           ) : (
             <AnimatePresence mode="wait">
               <motion.div
                 key={active}
-                className="projects-grid"
+                className={styles.projectsGrid}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -97,17 +98,17 @@ export default function Projects() {
                 {filtered.map((project, i) => (
                   <motion.div
                     key={project.id}
-                    className="project-card"
+                    className={styles.projectCard}
                     initial={{ opacity: 0, y: 28 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
                   >
                     <img src={project.image} alt={project.title} loading="lazy" />
-                    <div className="project-card-overlay">
-                      <div className="project-card-meta">
-                        <p className="project-card-type">{project.type}</p>
-                        <p className="project-card-title">{project.title}</p>
-                        <p className="project-card-year">{project.location} · {project.year}</p>
+                    <div className={styles.projectCardOverlay}>
+                      <div className={styles.projectCardMeta}>
+                        <p className={styles.projectCardType}>{project.type}</p>
+                        <p className={styles.projectCardTitle}>{project.title}</p>
+                        <p className={styles.projectCardYear}>{project.location} · {project.year}</p>
                       </div>
                     </div>
                   </motion.div>

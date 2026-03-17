@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import styles from './Navbar.module.css'
 
 const navLinks = [
   { to: '/projects', label: 'Projects' },
@@ -36,18 +37,18 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
-        <div className="navbar-inner">
-          <Link to="/" className="nav-logo" onClick={() => setMenuOpen(false)}>
-            MK<span className="nav-logo-accent"> Architecture</span>
+      <nav className={`${styles.navbar}${scrolled ? ' ' + styles.scrolled : ''}`}>
+        <div className={styles.navbarInner}>
+          <Link to="/" className={styles.navLogo} onClick={() => setMenuOpen(false)}>
+            MK<span className={styles.navLogoAccent}> Architecture</span>
           </Link>
 
-          <ul className="nav-center">
+          <ul className={styles.navCenter}>
             {navLinks.map(({ to, label }) => (
               <li key={to}>
                 <NavLink
                   to={to}
-                  className={({ isActive }) => isActive ? 'active' : ''}
+                  className={({ isActive }) => isActive ? styles.active : ''}
                 >
                   {label}
                 </NavLink>
@@ -55,12 +56,12 @@ export default function Navbar() {
             ))}
           </ul>
 
-          <div className="nav-right">
-            <Link to="/contact" className="nav-cta">
+          <div className={styles.navRight}>
+            <Link to="/contact" className={styles.navCta}>
               Contact
             </Link>
             <button
-              className={`nav-hamburger${menuOpen ? ' open' : ''}`}
+              className={`${styles.navHamburger}${menuOpen ? ' ' + styles.open : ''}`}
               onClick={() => setMenuOpen(v => !v)}
               aria-label="Toggle menu"
             >
@@ -75,7 +76,7 @@ export default function Navbar() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="mobile-menu"
+            className={styles.mobileMenu}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
